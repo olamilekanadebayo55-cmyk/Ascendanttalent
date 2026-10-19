@@ -2,19 +2,26 @@
 
 Talent-sourcing research and career-opportunity platform for Ascendant Groups.
 
-## Status: foundation only (not deployable yet)
-Done: architecture and design plan (`docs/ARCHITECTURE.md`), database schema (`prisma/schema.prisma`), publication-eligibility rules with tests (`src/lib/publication.ts`), `.env.example`.
-Not yet built: pages/routes (`src/app`), authentication, directory, enquiry forms, admin dashboard, email, storage, SEO, end-to-end tests.
-A Vercel deploy will fail until `src/app` exists, because there is nothing for Next.js to build.
+## Status: public shell, deployable on Vercel
+Built and checked: homepage, `/opportunities` (empty state), `robots.txt`, `sitemap.xml`, security headers,
+fonts (self-hosted), publication rules with tests, architecture notes, database schema.
+Not built yet: authentication, listings directory, enquiry forms, admin dashboard, email, storage, end-to-end tests.
+The database is **not needed** for the current site; it is only needed once auth and the directory are added.
 
-## Local setup
-1. `cp .env.example .env` and fill in `DATABASE_URL` (PostgreSQL) and `SESSION_SECRET`.
-2. `npm install`
-3. `npx prisma migrate dev --name init`
-4. `npm test`
+## Run locally
+```
+npm install
+npm run dev        # http://localhost:3000
+npm test           # publication rules
+npm run build      # production build
+```
 
-## Deploying on Vercel (once the app exists)
-1. Push this repo to GitHub and import it in Vercel (framework: Next.js).
-2. Create a hosted PostgreSQL database (e.g. Neon or Supabase) and add its URL as `DATABASE_URL`.
-3. Add the other variables from `.env.example` in Vercel > Settings > Environment Variables. Use separate values for Preview and Production.
-4. Run `npx prisma migrate deploy` against the production database.
+## Deploy on Vercel
+1. Upload the contents of this folder to the root of a GitHub repo (`package.json` must be at the top level).
+2. In Vercel: Add New > Project > import the repo. Framework is detected as Next.js. Leave build settings at defaults.
+3. Optional now: add `NEXT_PUBLIC_SITE_URL` (your live URL) under Settings > Environment Variables, then redeploy.
+4. Database variables from `.env.example` are needed only when the next phases land (Neon or Supabase Postgres).
+
+## Notes
+- `prisma/schema.prisma` is kept for the next phases. `@prisma/client`, argon2, S3 and Resend packages will be added when they are used.
+- Colour and type tokens are in `src/app/globals.css`. Footer and legal copy are placeholders pending client approval.

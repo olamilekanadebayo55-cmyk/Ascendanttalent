@@ -1,0 +1,112 @@
+:root {
+  --charcoal: #20211f;
+  --ivory: #f7f4ed;
+  --stone: #e4dfd3;
+  --white: #ffffff;
+  --gold: #a88b52;          /* decorative and large text only */
+  --gold-text: #7d6532;     /* gold for text on ivory (5.1:1) */
+  --gold-on-dark: #c9ae72;  /* gold for text on charcoal (7.5:1) */
+  --muted: #5e5e58;         /* secondary text on ivory (5.9:1) */
+  --serif: "Newsreader Variable", Georgia, "Times New Roman", serif;
+  --sans: "Hanken Grotesk Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --max: 76rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--charcoal);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.12; margin: 0; letter-spacing: -0.01em; }
+p { margin: 0; }
+a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--gold-text); outline-offset: 3px; }
+
+.skip { position: absolute; left: -999px; top: 0; background: var(--charcoal); color: var(--ivory); padding: 0.75rem 1rem; z-index: 10; }
+.skip:focus { left: 0; }
+
+.wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* Header */
+.site-header { border-bottom: 1px solid var(--stone); }
+.site-header .wrap { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; padding-block: 1.25rem; flex-wrap: wrap; }
+.brand { font-family: var(--serif); font-size: 1.5rem; text-decoration: none; letter-spacing: -0.01em; }
+.brand:hover { text-decoration: underline; text-decoration-thickness: 1px; }
+.nav { display: flex; gap: 1.75rem; font-size: 0.975rem; }
+.nav a { text-decoration: none; padding-block: 0.25rem; border-bottom: 1px solid transparent; }
+.nav a:hover, .nav a[aria-current="page"] { border-bottom-color: var(--charcoal); }
+
+/* Hero */
+.hero { padding-block: clamp(3rem, 8vw, 6.5rem) clamp(3rem, 7vw, 5.5rem); }
+.hero .wrap { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 2rem; row-gap: 3rem; align-items: start; }
+.hero-copy { grid-column: 1 / span 7; }
+.hero h1 { font-size: clamp(2.5rem, 5.6vw, 4.5rem); font-weight: 350; max-width: 15ch; }
+.lede { margin-top: 1.75rem; max-width: 34rem; font-size: 1.1875rem; color: var(--muted); }
+.actions { margin-top: 2.25rem; display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; }
+.button { display: inline-block; background: var(--charcoal); color: var(--ivory); padding: 0.85rem 1.4rem; text-decoration: none; border-radius: 2px; font-weight: 500; }
+.button:hover { background: #000; text-decoration: none; }
+.link-quiet { color: var(--charcoal); }
+
+/* Provenance record */
+.record { grid-column: 8 / span 5; margin: 0; }
+.record-box { background: var(--white); border: 1px solid var(--charcoal); }
+.record-title { padding: 0.7rem 1.1rem; border-bottom: 1px solid var(--charcoal); font-size: 0.9rem; color: var(--gold-text); font-weight: 600; }
+.record dl { margin: 0; }
+.record-row { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1rem; padding: 0.8rem 1.1rem; border-bottom: 1px solid var(--stone); }
+.record-row:last-child { border-bottom: 0; }
+.record dt { font-size: 0.9rem; color: var(--muted); }
+.record dd { margin: 0; font-family: var(--serif); font-style: italic; font-size: 1.0625rem; line-height: 1.4; }
+.record figcaption { margin-top: 0.75rem; font-size: 0.9rem; color: var(--muted); }
+
+/* Sections */
+.section { padding-block: clamp(3rem, 6vw, 5rem); border-top: 1px solid var(--stone); }
+.section .wrap { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 2rem; row-gap: 2rem; }
+.section-head { grid-column: 1 / span 4; }
+.section-head h2 { font-size: clamp(1.75rem, 3vw, 2.4rem); }
+.section-head p { margin-top: 1rem; color: var(--muted); max-width: 28rem; }
+.section-body { grid-column: 6 / span 7; }
+
+.rows { list-style: none; margin: 0; padding: 0; }
+.rows > li { padding-block: 1.4rem; border-top: 1px solid var(--stone); }
+.rows > li:first-child { border-top: 0; padding-top: 0; }
+.rows h3 { font-size: 1.5rem; font-style: italic; font-weight: 400; }
+.rows p { margin-top: 0.4rem; color: var(--muted); max-width: 36rem; }
+
+.checks { list-style: none; margin: 0; padding: 0; }
+.checks li { padding: 0.9rem 0 0.9rem 1.75rem; border-top: 1px solid var(--stone); position: relative; max-width: 36rem; }
+.checks li:first-child { border-top: 0; padding-top: 0; }
+.checks li::before { content: ""; position: absolute; left: 0; top: 1.35rem; width: 0.65rem; height: 0.65rem; background: var(--gold); }
+.checks li:first-child::before { top: 0.45rem; }
+
+.empty { border: 1px dashed var(--muted); padding: clamp(1.5rem, 4vw, 2.5rem); max-width: 40rem; }
+.empty h2 { font-size: 1.75rem; }
+.empty p { margin-top: 0.75rem; color: var(--muted); max-width: 32rem; }
+
+.page-title { padding-block: clamp(2.5rem, 6vw, 4.5rem) 2rem; }
+.page-title h1 { font-size: clamp(2.25rem, 4.5vw, 3.5rem); font-weight: 350; }
+.page-title p { margin-top: 1.25rem; max-width: 36rem; color: var(--muted); font-size: 1.125rem; }
+.page-body { padding-bottom: clamp(3rem, 7vw, 5rem); }
+
+/* Footer */
+.site-footer { background: var(--charcoal); color: var(--ivory); padding-block: 2.75rem; margin-top: 2rem; }
+.site-footer .wrap { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; align-items: baseline; }
+.site-footer .brand { color: var(--ivory); }
+.site-footer p { color: #d9d4c7; font-size: 0.95rem; max-width: 30rem; }
+.site-footer a { color: var(--gold-on-dark); }
+
+@media (max-width: 62rem) {
+  .hero-copy, .record, .section-head, .section-body { grid-column: 1 / -1; }
+  .hero h1 { max-width: 18ch; }
+}
+@media (max-width: 30rem) {
+  .record-row { grid-template-columns: 1fr; gap: 0.15rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }

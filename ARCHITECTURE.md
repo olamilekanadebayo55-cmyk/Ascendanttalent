@@ -28,3 +28,7 @@ Single Next.js 15 (App Router, TypeScript) app with server actions and route han
 
 ## Pending client input
 Legal copy (privacy, terms, disclaimer), retention periods, domains, email sender, parent/related brand URLs, logo, approved About content.
+
+
+## Build log
+- v0.2: Next.js shell with homepage, /opportunities empty state, robots, sitemap, security headers. Fonts via @fontsource (no Google Fonts request at build). Muted text uses #5E5E58 (5.9:1) because #74746E measured 4.3:1 on ivory.
